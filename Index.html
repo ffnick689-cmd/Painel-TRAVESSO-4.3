@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+<meta charset="UTF-8">
+<title>NEVER PURE - UI</title>
+<style>
+body{
+    margin:0;
+    background:#0a0a0f;
+    font-family:Arial, Helvetica, sans-serif;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+}
+
+.panel{
+    width:340px;
+    background:#111;
+    border:2px solid #b300ff;
+    border-radius:10px;
+    box-shadow:0 0 20px #b300ff;
+    color:white;
+}
+
+.header{
+    background:#b300ff;
+    padding:8px;
+    text-align:center;
+    font-weight:bold;
+}
+
+.tabs{
+    display:flex;
+    justify-content:space-around;
+    background:#1a1a1f;
+    padding:6px 0;
+}
+
+.tabs button{
+    background:none;
+    border:none;
+    color:white;
+    cursor:pointer;
+}
+
+.content{
+    padding:15px;
+}
+
+.option{
+    margin:8px 0;
+}
+
+button.inject{
+    width:100%;
+    padding:10px;
+    margin-top:15px;
+    background:#b300ff;
+    border:none;
+    color:white;
+    font-weight:bold;
+    cursor:pointer;
+    border-radius:5px;
+}
+
+.status{
+    text-align:center;
+    margin-top:10px;
+    font-size:14px;
+}
+</style>
+</head>
+<body>
+
+<div class="panel">
+    <div class="header">NEVER PURE</div>
+
+    <div class="tabs">
+        <button onclick="showTab('aim')">AIM</button>
+        <button onclick="showTab('esp')">ESP</button>
+        <button onclick="showTab('misc')">MISC</button>
+        <button onclick="showTab('info')">INFO</button>
+    </div>
+
+    <div class="content" id="aim">
+        <div class="option"><input type="checkbox"> Ativar Função 1</div>
+        <div class="option"><input type="checkbox"> Ativar Função 2</div>
+        <div class="option">
+            Intensidade:
+            <input type="range" min="0" max="100">
+        </div>
+    </div>
+
+    <div class="content" id="esp" style="display:none;">
+        <div class="option"><input type="checkbox"> Visual Extra 1</div>
+        <div class="option"><input type="checkbox"> Visual Extra 2</div>
+    </div>
+
+    <div class="content" id="misc" style="display:none;">
+        <div class="option"><input type="checkbox"> Modo Performance</div>
+        <div class="option"><input type="checkbox"> Interface Neon</div>
+    </div>
+
+    <div class="content" id="info" style="display:none;">
+        <p>Painel visual fictício</p>
+        <p>Versão 1.0</p>
+    </div>
+
+    <button class="inject" onclick="inject()">INICIAR</button>
+    <div class="status" id="status"></div>
+</div>
+
+<script>
+function showTab(tab){
+    document.querySelectorAll('.content').forEach(el => el.style.display='none');
+    document.getElementById(tab).style.display='block';
+}
+
+function inject(){
+    let status = document.getElementById("status");
+    status.innerHTML = "Carregando...";
+    setTimeout(()=>{
+        status.innerHTML = "Concluído!";
+    },3000);
+}
+</script>
+
+</body>
+</html>
